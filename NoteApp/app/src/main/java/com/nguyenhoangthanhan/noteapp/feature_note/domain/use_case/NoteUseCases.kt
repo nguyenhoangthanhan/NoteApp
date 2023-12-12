@@ -1,6 +1,6 @@
 package com.nguyenhoangthanhan.noteapp.feature_note.domain.use_case
 
-data class NotesUseCase (
+data class NoteUseCases (
     val getNotes: GetNotes,
     val deleteNote: DeleteNote
 )
