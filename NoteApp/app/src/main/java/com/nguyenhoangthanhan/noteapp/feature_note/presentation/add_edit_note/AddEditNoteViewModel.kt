@@ -111,7 +111,7 @@ class AddEditNoteViewModel @Inject constructor(
                         _eventFlow.emit(UiEvent.SaveNote)
                     } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
-                            UiEvent.showSnackBar(
+                            UiEvent.ShowSnackBar(
                                 message = e.message ?: "Couldn't save note"
                             )
                         )
@@ -122,7 +122,7 @@ class AddEditNoteViewModel @Inject constructor(
     }
 
     sealed class UiEvent {
-        data class showSnackBar(val message: String) : UiEvent()
+        data class ShowSnackBar(val message: String) : UiEvent()
         object SaveNote : UiEvent()
     }
 }
