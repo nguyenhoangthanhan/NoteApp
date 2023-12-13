@@ -59,12 +59,13 @@ fun AddEditNoteScreen(
         key1 = true,
         block = {
             viewModel.eventFlow.collectLatest { event ->
-                when(event){
+                when (event) {
                     is AddEditNoteViewModel.UiEvent.ShowSnackBar -> {
                         snackBarHostState.showSnackbar(
                             message = event.message
                         )
                     }
+
                     is AddEditNoteViewModel.UiEvent.SaveNote -> {
                         navController.navigateUp()
                     }
@@ -121,7 +122,8 @@ fun AddEditNoteScreen(
                                 width = 3.dp,
                                 color = if (viewModel.noteColor.value == colorInt) {
                                     Color.Black
-                                } else Color.Transparent
+                                } else Color.Transparent,
+                                shape = CircleShape
                             )
                             .clickable {
                                 scope.launch {
@@ -142,9 +144,9 @@ fun AddEditNoteScreen(
                 text = titleState.text,
                 hint = titleState.hint,
                 onValueChange = {
-                                viewModel.onEvent(AddEditNoteEvent.EnteredTitle(it))
+                    viewModel.onEvent(AddEditNoteEvent.EnteredTitle(it))
                 },
-                onFocusState ={
+                onFocusState = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeTitleFocus(it))
                 },
                 isHintVisible = titleState.isHintVisible,
@@ -158,7 +160,7 @@ fun AddEditNoteScreen(
                 onValueChange = {
                     viewModel.onEvent(AddEditNoteEvent.EnteredContent(it))
                 },
-                onFocusState ={
+                onFocusState = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
                 },
                 isHintVisible = contentState.isHintVisible,

@@ -40,7 +40,7 @@ fun NoteItem(
         modifier = modifier
     ) {
         Canvas(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.matchParentSize(),
             onDraw = {
                 val clipPath = Path().apply {
                     lineTo(size.width - cutCornerSize.toPx(), 0f)
@@ -96,7 +96,8 @@ fun NoteItem(
         ) {
             Icon(
                 imageVector = Icons.Default.Delete,
-                contentDescription = "Delete note"
+                contentDescription = "Delete note",
+                tint = MaterialTheme.colorScheme.onSurface
             )
         }
 
